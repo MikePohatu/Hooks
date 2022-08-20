@@ -23,12 +23,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("hooks")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Hooks")]
+[assembly: AssemblyDescription("Hooks for Windows")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("hooks")]
-[assembly: AssemblyCopyright("Copyright ©  2022")]
+[assembly: AssemblyCompany("20Road Limited")]
+[assembly: AssemblyProduct("Hooks for Windows")]
+[assembly: AssemblyCopyright("Copyright © 20Road Limited 2022")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

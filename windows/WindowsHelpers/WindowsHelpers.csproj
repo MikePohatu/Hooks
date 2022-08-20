@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AsyncHelpers.cs" />
+    <Compile Include="EnvironmentVariableHelpers.cs" />
     <Compile Include="Hotfix.cs" />
     <Compile Include="ImpersonationHelpers.cs" />
     <Compile Include="InstalledApplication.cs" />

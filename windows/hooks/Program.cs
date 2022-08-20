@@ -23,8 +23,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Core.Diagnostics;
 using Core.Logging;
+using WindowsHelpers;
 
-namespace hooks
+namespace Hooks
 {
     internal class Program
     {
@@ -33,7 +34,10 @@ namespace hooks
             LoggingHelpers.InitLogging();
             AppDomain currentDomain = AppDomain.CurrentDomain;
             currentDomain.UnhandledException += new UnhandledExceptionEventHandler(OnUnhandledException);
+            Arguments.ProcessArguments(args);
 
+            if (Arguments.Install) { EnvironmentVariableHelpers.AddPath(AppDomain.CurrentDomain.BaseDirectory, EnvironmentVariableHelpers.Type.System); }
+        
         }
 
         public static void OnUnhandledException(object sender, UnhandledExceptionEventArgs args)

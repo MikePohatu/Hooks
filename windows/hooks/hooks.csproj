@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{5139E69B-60C2-4F76-88F9-364E8B1CCEE2}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>hooks</RootNamespace>
+    <RootNamespace>Hooks</RootNamespace>
     <AssemblyName>hooks</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Arguments.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
