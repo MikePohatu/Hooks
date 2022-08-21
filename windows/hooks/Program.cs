@@ -33,11 +33,13 @@ namespace Hooks
         {
             LoggingHelpers.InitLogging();
             AppDomain currentDomain = AppDomain.CurrentDomain;
-            currentDomain.UnhandledException += new UnhandledExceptionEventHandler(OnUnhandledException);
+            currentDomain.UnhandledException += OnUnhandledException;
             Arguments.ProcessArguments(args);
 
             if (Arguments.Install) { EnvironmentVariableHelpers.AddPath(AppDomain.CurrentDomain.BaseDirectory, EnvironmentVariableHelpers.Type.System); }
-        
+            else if (Arguments.Uninstall) { EnvironmentVariableHelpers.RemovePath(AppDomain.CurrentDomain.BaseDirectory, EnvironmentVariableHelpers.Type.System); }
+
+            throw new KnownException("test","test");
         }
 
         public static void OnUnhandledException(object sender, UnhandledExceptionEventArgs args)
@@ -56,7 +58,6 @@ namespace Hooks
                 if (!string.IsNullOrEmpty(AdditionalText)) { s = s + Environment.NewLine + AdditionalText; }
                 ShowErrorMessageAndClose(s);
             }
-
         }
 
         private static void ShowErrorMessageAndClose(KnownException e)
@@ -68,8 +69,8 @@ namespace Hooks
         private static void ShowErrorMessageAndClose(string Message)
         {
             Log.Fatal("Closing Hooks. Error message: " + Message);
-            string msg = Message;
-            //Director.Instance.CloseWithError("Application Runtime Exception", msg);
+            Console.WriteLine(Message);
+            Environment.Exit(1);
         }
     }
 }

@@ -28,6 +28,7 @@ namespace Hooks
     public static class Arguments
     {
         public static bool Install { get; private set; } = false;
+        public static bool Uninstall { get; private set; } = false;
         public static string LogFile { get; private set; }
         public static int LoggingLevel { get; private set; }
 
@@ -47,6 +48,9 @@ namespace Hooks
                             break;
                         case "-INSTALL":
                             Install = true;
+                            break;
+                        case "-UNINSTALL":
+                            Uninstall = true;
                             break;
                         default:
                             throw new InvalidOperationException("Invalid parameter: " + Args[index]);

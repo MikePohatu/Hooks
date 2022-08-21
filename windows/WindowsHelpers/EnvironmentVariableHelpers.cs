@@ -41,6 +41,44 @@ namespace WindowsHelpers
             return finalpath;
         }
 
+
+        public static string RemovePath(string path, Type type)
+        {
+            string current = GetVariableValue("PATH", type);
+            if (string.IsNullOrEmpty(path)) { return current; }
+
+            string newpath = path.ToLower();
+            if (newpath.EndsWith("\\"))
+            {
+                newpath = newpath.Substring(0, newpath.Length - 1);
+            }
+
+            string[] paths = current.Split(';');
+            List<string> finalpaths = new List<string>();
+            foreach (string p in paths)
+            {
+                string subpath = p;
+                if (subpath.EndsWith("\\"))
+                {
+                    subpath = subpath.Substring(0, subpath.Length - 1);
+                }
+
+                //if path doesn't match, add to the list
+                if (subpath.ToLower() != newpath) { finalpaths.Add(p); }
+            }
+
+            //check something odd hasn't happened
+            if (finalpaths.Count < paths.Length -1)
+            {
+                throw new ApplicationException("Unexpected number of items in PATH");
+            }
+
+            string finalpath = string.Join(";", finalpaths);
+
+            SetVariable("PATH", finalpath, type);
+            return finalpath;
+        }
+
         public static void SetVariable(string variable, string value, Type type)
         {
             if (string.IsNullOrEmpty(variable)) { return; }
